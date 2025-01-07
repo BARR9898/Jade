@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+model Usuario {
+  id               Int          @id @default(autoincrement())
+  nombre           String
+  apellido_paterno String
+  apellido_materno String
+  password         String
+  email            String       @unique
+  ventas           Venta[]      @relation("UsuarioVentas")       // Relación con el modelo Venta
+}
+
+
+model Venta {
+  id            Int        @id @default(autoincrement())
+  fecha         DateTime   @default(now())
+  monto         Float
+  usuarioId     Int
+  usuario       Usuario    @relation("UsuarioVentas", fields: [usuarioId], references: [id])
+  devolucion    Boolean    @default(false)  // Indica si la venta fue devuelta
+  motivoDevolucion String?  // Motivo de la devolución (solo si devolucion es true)
+  autoparte     String?    // Campo opcional de tipo String para almacenar la autoparte
+}
