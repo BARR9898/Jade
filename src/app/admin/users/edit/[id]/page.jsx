@@ -5,17 +5,19 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import React from "react";
 
-function EditUser({ params, datUser }) {
-  const { id } = React.use(params); // Desempaqueta 'params' con React.use()
+// Usamos 'React.use()' para obtener 'params' correctamente
+function EditUser({ params }) {
+  const { id } = React.use(params); // Desempaquetamos 'params' usando React.use()
   const router = useRouter();
   const [user, setUser] = useState(null);
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
-  console.log('datUser', datUser);
+  console.log('params:', params); // Verifica que los params estén correctos
+  console.log('id:', id); // Verifica que 'id' se esté obteniendo correctamente
   
   useEffect(() => {
     console.log('use effect id', id);
-    
+
     if (id) {
       // Realiza la solicitud para obtener los datos del usuario por 'id'
       fetch(`/api/users/${id}`)
