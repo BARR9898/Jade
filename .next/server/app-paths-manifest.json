@@ -1,11 +1,10 @@
 {
-  "/api/sales/route": "app/api/sales/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/sales/route": "app/api/sales/route.js",
   "/api/sales/returns/route": "app/api/sales/returns/route.js",
-  "/api/users/route": "app/api/users/route.js",
   "/auth/login/page": "app/auth/login/page.js",
   "/admin/sales/page": "app/admin/sales/page.js",
-  "/admin/returns/page": "app/admin/returns/page.js",
-  "/admin/users/page": "app/admin/users/page.js"
+  "/admin/returns/page": "app/admin/returns/page.js"
 }

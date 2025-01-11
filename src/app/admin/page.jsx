@@ -1,11 +1,13 @@
 'use client';
+
 import { useState } from 'react';
 import { signOut } from "next-auth/react";
 import Link from 'next/link';
 import { GalleryHorizontal, Plus, LogOut, Users, List } from 'lucide-react';
 
-export default function Admin({ children }) { // Corregido de "chiildren" a "children"
+export default function Admin() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado para controlar el sidebar
+
   const handleLogout = () => {
     console.log('saliendo');
     signOut({ callbackUrl: "/auth/login" });
@@ -58,7 +60,8 @@ export default function Admin({ children }) { // Corregido de "chiildren" a "chi
       <div className="flex-1 ml-0 md:ml-64 h-screen bg-gray-100">
         {/* Aquí va el contenido de tu página */}
         <div className="p-4">
-         {children} {/* Ahora se usa "children" correctamente */}
+          {/* Si tienes algún contenido en la página, puedes insertarlo aquí */}
+          <h1>Contenido de Admin</h1>
         </div>
       </div>
     </div>
